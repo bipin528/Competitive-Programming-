@@ -1,0 +1,13 @@
+class Solution:
+    def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
+        pos = -1  # Initialize position counter
+        stack, ans = [], []  # Initialize stack and result list
+        while head:
+            pos += 1  # Increment position
+            ans.append(0)  # Append 0 initially, will be updated if a larger value is found
+            while stack and stack[-1][1] < head.val:
+                index, _ = stack.pop()  # Pop the index
+                ans[index] = head.val  # Update result at the popped index
+            stack.append((pos, head.val))  # Append current position and value to stack
+            head = head.next  # Move to the next node
+        return ans
