@@ -1,0 +1,25 @@
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+
+        head1 = odd = ListNode(None)
+        head2 = even = ListNode(None)
+        t = head
+        i = 1  # Start from the first index
+
+        while t:
+            if i % 2 == 0:
+                odd.next = t
+                odd = odd.next
+            else:
+                even.next = t
+                even = even.next
+
+            t = t.next
+            i += 1
+
+        odd.next = None
+        even.next = head1.next
+
+        return head2.next
