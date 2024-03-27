@@ -1,0 +1,23 @@
+class MyQueue:
+
+    def __init__(self):
+        self.Stack=[]
+
+        
+
+    def push(self, x: int) -> None:
+        self.Stack.append(x)
+
+        
+
+    def pop(self) -> int:
+        return self.Stack.pop(0)
+        
+        
+
+    def peek(self) -> int:
+        return self.Stack[0]
+
+    def empty(self) -> bool:
+        return len(self.Stack)==0
+        
