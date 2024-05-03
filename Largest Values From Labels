@@ -1,0 +1,16 @@
+from typing import List
+
+class Solution:
+    def largestValsFromLabels(self, values: List[int], labels: List[int], numWanted: int, useLimit: int) -> int:
+        items = sorted(zip(values, labels), reverse=True)
+        selected = {}
+        result = 0
+        for value, label in items:
+            if selected.get(label, 0) < useLimit:  
+                selected[label] = selected.get(label, 0) + 1
+                result += value
+                numWanted -= 1  
+            if numWanted == 0:
+                break
+        return result  
+
